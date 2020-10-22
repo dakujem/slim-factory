@@ -1,0 +1,26 @@
+{
+  "name": "dakujem/slim-factory",
+  "description": "A tiny factory helper for Slim v4.",
+  "license": "Unlicense",
+  "authors": [
+    {
+      "name": "Andrej Rypák",
+      "email": "xrypak@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.2 || ^8.0",
+    "psr/container": "^1.0",
+    "slim/slim": "^4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dakujem\\Slim\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "1.0.x-dev"
+    }
+  }
+}
