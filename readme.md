@@ -28,7 +28,7 @@ $app = Slim\Factory\AppFactory::create( ... );
 SlimFactory::decorate($app, $decorators);
 ```
 
-A **decorator** is one of (see example below):
+A **decorator** may be:
 - an instance of `AppDecoratorInterface` implementation
 - a string name of such a class
 - a callable provider of such an instance
@@ -45,12 +45,12 @@ class MiddlewareDecorator implements AppDecoratorInterface
     }
 }
 
-// all the following 4 decorators do exacly the same:
+// The following 4 decorators are equivalent:
 $decorators = [
     new MiddlewareDecorator(),          // a decorator instance
     MiddlewareDecorator::class,         // a class name
     fn() => new MiddlewareDecorator(),  // a decorator provider
-    function(App $slim): void {         // a decorator callable (no class)
+    function(App $slim): void {         // a callable decorator
         $slim->addRoutingMiddleware();
         $slim->addBodyParsingMiddleware();
         $slim->addErrorMiddleware();
