@@ -37,7 +37,7 @@ A **decorator** may be:
 ```php
 class MiddlewareDecorator implements AppDecoratorInterface
 {
-    public function configure(App $slim): void
+    public function decorate(App $slim): void
     {
         $slim->addRoutingMiddleware();
         $slim->addBodyParsingMiddleware();
