@@ -3,8 +3,13 @@
 namespace Dakujem\Slim;
 
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
 use Slim\Factory\AppFactory;
+use Slim\Interfaces\CallableResolverInterface;
+use Slim\Interfaces\MiddlewareDispatcherInterface;
+use Slim\Interfaces\RouteCollectorInterface;
+use Slim\Interfaces\RouteResolverInterface;
 use Traversable;
 
 /**
@@ -32,7 +37,14 @@ final class SlimFactory
     }
 
     /**
-     * Create an instance of Slim v4 App using services from a container and configure it using decorators.
+     * Create an instance of Slim v4 App using core services from a container and configure it using decorators.
+     *
+     * The factory will try to fetch the following services from the container:
+     * @see ResponseFactoryInterface
+     * @see CallableResolverInterface
+     * @see RouteCollectorInterface
+     * @see RouteResolverInterface
+     * @see MiddlewareDispatcherInterface
      *
      * @param ContainerInterface $container a service container containing core services for the App instance
      * @param iterable $decorators an iterable containing app decorators, see `SlimFactory::decorate()` for accepted values
@@ -61,16 +73,16 @@ final class SlimFactory
     public static function decorate(App $slim, iterable $decorators): App
     {
         foreach ($decorators as $c) {
-            $callable = false;
+            $hasBeenInvoked = false;
             if (is_string($c) && class_exists($c)) {
                 $c = new $c();
             } elseif (is_callable($c)) {
-                $callable = true;
                 $c = $c($slim);
+                $hasBeenInvoked = true;
             }
             if ($c instanceof AppDecoratorInterface) {
                 $c->decorate($slim);
-            } elseif (!$callable) {
+            } elseif (!$hasBeenInvoked) {
                 throw new FactoryException(sprintf(
                         'Improper Slim configurator, need an instance of %s or a callable, got %s.',
                         AppDecoratorInterface::class,
