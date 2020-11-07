@@ -74,3 +74,16 @@ $decorators = [
 >
 
 
+## Testing
+
+Run unit tests using the following command:
+
+`$` `composer test`
+
+
+## Contributing
+
+Ideas, feature requests and other contribution is welcome.
+Please send a PR or create an issue.
+
+
