@@ -10,7 +10,6 @@ use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\MiddlewareDispatcherInterface;
 use Slim\Interfaces\RouteCollectorInterface;
 use Slim\Interfaces\RouteResolverInterface;
-use Traversable;
 
 /**
  * Slim Factory.
@@ -66,7 +65,7 @@ final class SlimFactory
      * - a callable that directly decorates the slim app instance (passed in as the first argument)
      *
      * @param App $slim
-     * @param array|Traversable $decorators
+     * @param iterable $decorators
      * @return App returns the same instance, decorated
      * @throws FactoryException
      */

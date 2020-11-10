@@ -67,9 +67,9 @@ $decorators = [
 > If a callable is used as a decorator, it is always invoked, regardless of its signature.
 >
 > If the callable returns an instance of a decorator (an implementation of `AppDecoratorInterface`),
-> it is be invoked too.
+> the returned decorator is immediately applied too.
 >
-> The callables receive the App instance as the first argument,
+> The callables receive the instance of the App being decorated as the first argument,
 > which is the same signature as the one of `AppDecoratorInterface::decorate` method.
 >
 
