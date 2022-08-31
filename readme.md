@@ -4,10 +4,6 @@
 [![Tests](https://github.com/dakujem/slim-factory/actions/workflows/php-test.yml/badge.svg)](https://github.com/dakujem/slim-factory/actions/workflows/php-test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/dakujem/slim-factory/badge.svg?branch=main)](https://coveralls.io/github/dakujem/slim-factory?branch=main)
 
-<!--
-[![Build Status](https://travis-ci.org/dakujem/slim-factory.svg?branch=main)](https://travis-ci.org/dakujem/slim-factory)
--->
-
 > 💿 `composer require dakujem/slim-factory`
 
 
