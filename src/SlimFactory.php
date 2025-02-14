@@ -26,7 +26,7 @@ final class SlimFactory
      * @return App
      * @throws FactoryException
      */
-    public static function build(iterable $decorators = [], ContainerInterface $container = null): App
+    public static function build(iterable $decorators = [], ?ContainerInterface $container = null): App
     {
         return self::decorate(AppFactory::create(
             null, // let the AppFactory detect & configure the request factory
